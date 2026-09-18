@@ -72,6 +72,21 @@ export default function Details() {
         <motion.p className="details__venue-note" {...fadeUp(0.3)}>
           Reached by boat, across the Nile.
         </motion.p>
+        <motion.a
+          className="details__map"
+          href={EVENT.mapUrl}
+          target="_blank"
+          rel="noopener noreferrer"
+          {...fadeUp(0.36)}
+        >
+          <svg viewBox="0 0 24 24" width="14" height="14" aria-hidden="true">
+            <path
+              fill="currentColor"
+              d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5A2.5 2.5 0 1 1 12 6.5a2.5 2.5 0 0 1 0 5z"
+            />
+          </svg>
+          <span>Open location in Maps</span>
+        </motion.a>
 
         <motion.div className="hairline details__hairline" {...fadeUp(0.34)} />
 

@@ -2,7 +2,11 @@ import { useState } from 'react'
 import { AnimatePresence, motion } from 'framer-motion'
 import Flora from './Flora.jsx'
 import { FLOWERS } from '../data/flowers.js'
+import { RSVP_ENDPOINT } from '../data/event.js'
 import './rsvp.css'
+
+const ENDPOINT_READY =
+  typeof RSVP_ENDPOINT === 'string' && RSVP_ENDPOINT.startsWith('https://script.google.com/')
 
 const ease = [0.22, 1, 0.36, 1]
 
@@ -22,16 +26,19 @@ export default function Rsvp() {
     attendance: '',
     message: '',
   })
-  const [status, setStatus] = useState('idle') // idle | error | done
+  const [status, setStatus] = useState('idle') // idle | sending | error | done
   const [errorField, setErrorField] = useState(null)
 
   const update = (key) => (e) => {
     setForm((f) => ({ ...f, [key]: e.target.value }))
     if (errorField === key) setErrorField(null)
+    if (status === 'error') setStatus('idle')
   }
 
-  const onSubmit = (e) => {
+  const onSubmit = async (e) => {
     e.preventDefault()
+    if (status === 'sending') return
+
     if (!form.name.trim()) {
       setErrorField('name')
       setStatus('error')
@@ -42,19 +49,53 @@ export default function Rsvp() {
       setStatus('error')
       return
     }
-    // No backend wired up — the response is kept locally and echoed back
-    // gracefully. Swap this block for a real endpoint (fetch/POST) later.
+
+    // Keep a local backup regardless, so a reply is never lost.
     try {
       const saved = JSON.parse(localStorage.getItem('ym_rsvps') || '[]')
       saved.push({ ...form, at: new Date().toISOString() })
       localStorage.setItem('ym_rsvps', JSON.stringify(saved))
     } catch {
-      /* storage may be unavailable — the thank-you still shows */
+      /* storage may be unavailable — the flow still continues */
     }
-    setStatus('done')
+
+    // If no Google Sheet endpoint is configured yet, just show the thank-you.
+    if (!ENDPOINT_READY) {
+      setStatus('done')
+      return
+    }
+
+    setStatus('sending')
+    setErrorField(null)
+
+    const body = new URLSearchParams({
+      name: form.name.trim(),
+      guests: form.guests,
+      attendance: form.attendance,
+      message: form.message.trim(),
+      submittedAt: new Date().toISOString(),
+    })
+
+    // Try a few times — Apps Script can be briefly flaky.
+    for (let attempt = 0; attempt < 3; attempt++) {
+      try {
+        const res = await fetch(RSVP_ENDPOINT, { method: 'POST', body })
+        if (res.ok) {
+          setStatus('done')
+          return
+        }
+      } catch (err) {
+        // Network/CORS hiccup — the row may still have been written.
+        console.error('RSVP submission error:', err)
+      }
+    }
+
+    setErrorField('submit')
+    setStatus('error')
   }
 
   const accepting = form.attendance === 'yes'
+  const sending = status === 'sending'
 
   return (
     <section id="rsvp" className="rsvp section" aria-label="Répondez s'il vous plaît">
@@ -203,12 +244,14 @@ export default function Rsvp() {
                 <p className="rsvp__error" role="alert">
                   {errorField === 'name'
                     ? 'Please share your name so we know who’s coming.'
-                    : 'Please let us know if you’ll be joining us.'}
+                    : errorField === 'attendance'
+                    ? 'Please let us know if you’ll be joining us.'
+                    : 'Something went wrong sending your reply. Please try again.'}
                 </p>
               )}
 
-              <button type="submit" className="rsvp__submit">
-                Send my reply
+              <button type="submit" className="rsvp__submit" disabled={sending}>
+                {sending ? 'Sending…' : 'Send my reply'}
               </button>
             </motion.form>
           )}
