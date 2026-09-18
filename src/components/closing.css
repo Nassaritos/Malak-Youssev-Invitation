@@ -67,9 +67,38 @@
   margin: 0;
 }
 
+.closing__credit {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 1.5rem;
+  z-index: 6;
+  margin: 0;
+  text-align: center;
+  font-family: var(--sans);
+  font-size: 0.62rem;
+  font-weight: 400;
+  letter-spacing: var(--tracking-mid);
+  text-transform: uppercase;
+  color: var(--ink-soft);
+  opacity: 0.7;
+}
+
+.closing__credit-love {
+  font-family: var(--serif);
+  font-style: italic;
+  text-transform: none;
+  letter-spacing: 0.02em;
+  font-size: 1.15em;
+  color: var(--dusty-rose);
+}
+
 @media (max-width: 560px) {
   .closing__meta {
     letter-spacing: 0.06em;
     line-height: 2;
+  }
+  .closing__credit {
+    font-size: 0.56rem;
   }
 }

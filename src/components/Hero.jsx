@@ -20,8 +20,7 @@ export default function Hero() {
           src={FLOWERS.eucalyptus}
           place={{ top: '3%', right: '2%', width: 'clamp(96px, 13vw, 170px)' }}
           rotate={22}
-          opacity={0.6}
-          blur={0.6}
+          opacity={0.85}
           z={1}
           delay={0.6}
         />
@@ -31,8 +30,7 @@ export default function Hero() {
           src={FLOWERS.eucalyptus}
           place={{ bottom: '2%', left: '1%', width: 'clamp(120px, 18vw, 240px)' }}
           rotate={-150}
-          opacity={0.85}
-          blur={0.5}
+          opacity={0.92}
           z={1}
           delay={0.55}
         />

@@ -17,8 +17,7 @@ export default function Closing() {
           src={FLOWERS.eucalyptus}
           place={{ top: '2%', left: '1%', width: 'clamp(96px, 13vw, 176px)' }}
           rotate={-20}
-          opacity={0.6}
-          blur={0.6}
+          opacity={0.85}
           delay={0.2}
         />
         {/* bottom framing */}
@@ -98,6 +97,10 @@ export default function Closing() {
           {EVENT.dayName}, {EVENT.dateLabel} · {EVENT.timeShort} · {EVENT.venue}
         </motion.p>
       </div>
+
+      <p className="closing__credit">
+        Made with <span className="closing__credit-love">love</span> by Ibraheem Nassar
+      </p>
     </footer>
   )
 }

@@ -84,8 +84,7 @@ export default function Rsvp() {
           src={FLOWERS.eucalyptus}
           place={{ bottom: '2%', right: '1%', width: 'clamp(94px, 13vw, 170px)' }}
           rotate={150}
-          opacity={0.7}
-          blur={0.5}
+          opacity={0.85}
           delay={0.25}
         />
       </div>

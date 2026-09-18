@@ -46,8 +46,7 @@ export default function Journey() {
           src={FLOWERS.eucalyptus}
           place={{ top: '3%', left: '1%', width: 'clamp(96px, 14vw, 190px)' }}
           rotate={-24}
-          opacity={0.7}
-          blur={0.6}
+          opacity={0.85}
           delay={0.2}
         />
         <Flora
