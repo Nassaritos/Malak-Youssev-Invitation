@@ -48,6 +48,7 @@ export default function Journey() {
           rotate={-24}
           opacity={0.85}
           delay={0.2}
+          hideOnMobile
         />
         <Flora
           src={FLOWERS.lavender}
@@ -55,6 +56,7 @@ export default function Journey() {
           rotate={-10}
           opacity={0.8}
           delay={0.35}
+          hideOnMobile
         />
       </div>
 

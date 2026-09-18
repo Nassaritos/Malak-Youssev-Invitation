@@ -72,6 +72,7 @@ export default function Rsvp() {
           rotate={20}
           opacity={0.9}
           delay={0.35}
+          hideOnMobile
         />
         <Flora
           src={FLOWERS.lavender}
@@ -86,6 +87,7 @@ export default function Rsvp() {
           rotate={150}
           opacity={0.85}
           delay={0.25}
+          hideOnMobile
         />
       </div>
 

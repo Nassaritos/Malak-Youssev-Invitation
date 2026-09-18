@@ -32,6 +32,7 @@ export default function Flora({
   delay = 0,
   flip = false,
   duration = 1.7,
+  hideOnMobile = false,
 }) {
   const reduce = useReducedMotion()
 
@@ -42,7 +43,7 @@ export default function Flora({
 
   return (
     <motion.span
-      className="flora-wrap"
+      className={`flora-wrap${hideOnMobile ? ' flora-wrap--hide-mobile' : ''}`}
       aria-hidden="true"
       initial={{ opacity: 0, y: 30 }}
       whileInView={{ opacity: 1, y: 0 }}

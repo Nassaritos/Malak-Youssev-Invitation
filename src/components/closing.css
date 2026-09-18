@@ -100,5 +100,7 @@
   }
   .closing__credit {
     font-size: 0.56rem;
+    padding: 0 26%;
+    line-height: 1.9;
   }
 }

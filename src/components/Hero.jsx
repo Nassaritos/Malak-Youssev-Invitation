@@ -23,6 +23,7 @@ export default function Hero() {
           opacity={0.85}
           z={1}
           delay={0.6}
+          hideOnMobile
         />
 
         {/* bottom-left cluster — the fuller arrangement */}
@@ -33,6 +34,7 @@ export default function Hero() {
           opacity={0.92}
           z={1}
           delay={0.55}
+          hideOnMobile
         />
         <Flora
           src={FLOWERS.roseWhite}
@@ -47,6 +49,7 @@ export default function Hero() {
           rotate={-14}
           z={2}
           delay={0.9}
+          hideOnMobile
         />
         <Flora
           src={FLOWERS.lavender}

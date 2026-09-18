@@ -16,3 +16,11 @@
   user-select: none;
   -webkit-user-drag: none;
 }
+
+/* On narrow screens some corner blooms collide with headings, the menu
+   button or the footer credit — hide those specific ones. */
+@media (max-width: 620px) {
+  .flora-wrap--hide-mobile {
+    display: none !important;
+  }
+}

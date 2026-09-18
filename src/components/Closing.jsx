@@ -26,6 +26,7 @@ export default function Closing() {
           place={{ bottom: '3%', right: '3%', width: 'clamp(84px, 11vw, 148px)' }}
           rotate={-10}
           delay={0.45}
+          hideOnMobile
         />
         <Flora
           src={FLOWERS.lavender}
@@ -33,12 +34,14 @@ export default function Closing() {
           rotate={10}
           opacity={0.85}
           delay={0.55}
+          hideOnMobile
         />
         <Flora
           src={FLOWERS.rosebud}
           place={{ bottom: '6%', left: '6%', width: 'clamp(40px, 5vw, 66px)' }}
           rotate={-24}
           delay={0.5}
+          hideOnMobile
         />
       </div>
 

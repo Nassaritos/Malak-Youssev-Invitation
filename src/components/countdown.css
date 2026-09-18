@@ -44,6 +44,18 @@
   color: var(--soft-purple);
 }
 
+/* Keep the countdown clear of the fixed menu button on phones by letting it
+   wrap to two units per line, centred, instead of stretching edge-to-edge. */
+@media (max-width: 620px) {
+  .countdown {
+    max-width: 17rem;
+    margin: 0 auto;
+  }
+  .countdown__sep {
+    margin: 0 clamp(0.5rem, 3vw, 1rem);
+  }
+}
+
 @media (max-width: 460px) {
   .countdown__label {
     font-size: 0.5rem;
