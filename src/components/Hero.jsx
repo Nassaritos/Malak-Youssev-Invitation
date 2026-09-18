@@ -1,6 +1,6 @@
 import { motion } from 'framer-motion'
 import Flora from './Flora.jsx'
-import { FLOWERS } from '../data/flowers.js'
+import { FLOWERS, MONOGRAM } from '../data/flowers.js'
 import { EVENT } from '../data/event.js'
 import './hero.css'
 
@@ -15,37 +15,15 @@ export default function Hero() {
 
       {/* floral framing — sparse, entering from two corners */}
       <div className="flora-layer">
-        {/* top-right cluster */}
+        {/* a whisper of greenery top-right — the emblem carries the top */}
         <Flora
           src={FLOWERS.eucalyptus}
-          place={{ top: '2%', right: '1%', width: 'clamp(120px, 18vw, 240px)' }}
-          rotate={18}
-          opacity={0.9}
-          blur={0.4}
+          place={{ top: '3%', right: '2%', width: 'clamp(96px, 13vw, 170px)' }}
+          rotate={22}
+          opacity={0.6}
+          blur={0.6}
           z={1}
-          delay={0.5}
-        />
-        <Flora
-          src={FLOWERS.roseBlush}
-          place={{ top: '5%', right: '4%', width: 'clamp(84px, 11vw, 150px)' }}
-          rotate={-8}
-          z={3}
-          delay={0.7}
-        />
-        <Flora
-          src={FLOWERS.rosebud}
-          place={{ top: '13%', right: '16%', width: 'clamp(44px, 6vw, 78px)' }}
-          rotate={26}
-          z={2}
-          delay={0.95}
-        />
-        <Flora
-          src={FLOWERS.babysBreath}
-          place={{ top: '3%', right: '17%', width: 'clamp(74px, 9vw, 132px)' }}
-          rotate={-6}
-          opacity={0.9}
-          z={2}
-          delay={1.05}
+          delay={0.6}
         />
 
         {/* bottom-left cluster — the fuller arrangement */}
@@ -91,11 +69,22 @@ export default function Hero() {
       </div>
 
       <div className="hero__inner">
+        <motion.img
+          src={MONOGRAM}
+          className="hero__crest"
+          alt="Malak and Youssef monogram"
+          width="685"
+          height="900"
+          initial={{ opacity: 0, y: 18, scale: 0.94 }}
+          animate={{ opacity: 1, y: 0, scale: 1 }}
+          transition={{ duration: 1.4, ease, delay: 0.2 }}
+        />
+
         <motion.p
           className="eyebrow hero__eyebrow"
           initial={{ opacity: 0, y: 14 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 1, ease, delay: 0.15 }}
+          transition={{ duration: 1, ease, delay: 0.55 }}
         >
           Together with their families
         </motion.p>
@@ -105,7 +94,7 @@ export default function Hero() {
             className="hero__name"
             initial={{ opacity: 0, y: 26 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 1.15, ease, delay: 0.3 }}
+            transition={{ duration: 1.15, ease, delay: 0.65 }}
           >
             {EVENT.groom}
           </motion.span>
@@ -114,7 +103,7 @@ export default function Hero() {
             className="hero__amp"
             initial={{ opacity: 0, scale: 0.8 }}
             animate={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 1.2, ease, delay: 0.6 }}
+            transition={{ duration: 1.2, ease, delay: 0.9 }}
             aria-hidden="true"
           >
             &amp;
@@ -124,7 +113,7 @@ export default function Hero() {
             className="hero__name"
             initial={{ opacity: 0, y: 26 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 1.15, ease, delay: 0.75 }}
+            transition={{ duration: 1.15, ease, delay: 1.0 }}
           >
             {EVENT.bride}
           </motion.span>
@@ -134,7 +123,7 @@ export default function Hero() {
           className="hero__invite"
           initial={{ opacity: 0, y: 16 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 1.1, ease, delay: 0.95 }}
+          transition={{ duration: 1.1, ease, delay: 1.2 }}
         >
           invite you to celebrate their engagement
         </motion.p>
@@ -143,7 +132,7 @@ export default function Hero() {
           className="hero__meta"
           initial={{ opacity: 0, y: 18 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 1.1, ease, delay: 1.15 }}
+          transition={{ duration: 1.1, ease, delay: 1.4 }}
         >
           <span className="hero__date">
             {EVENT.dayName}, {EVENT.dateLabel}

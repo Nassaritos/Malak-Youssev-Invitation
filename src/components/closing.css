@@ -25,6 +25,14 @@
   max-width: 44rem;
 }
 
+.closing__crest {
+  display: block;
+  width: auto;
+  height: clamp(128px, 24vw, 224px);
+  margin: 0 auto clamp(1.6rem, 4vh, 2.4rem);
+  filter: drop-shadow(0 16px 30px rgba(74, 53, 72, 0.08));
+}
+
 .closing__names {
   font-size: clamp(3rem, 12vw, 7.5rem);
   font-weight: 500;

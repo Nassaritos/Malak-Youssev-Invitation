@@ -1,6 +1,6 @@
 import { motion } from 'framer-motion'
 import Flora from './Flora.jsx'
-import { FLOWERS } from '../data/flowers.js'
+import { FLOWERS, MONOGRAM } from '../data/flowers.js'
 import { EVENT } from '../data/event.js'
 import './closing.css'
 
@@ -12,27 +12,14 @@ export default function Closing() {
       <div className="closing__wash" aria-hidden="true" />
 
       <div className="flora-layer">
-        {/* top framing */}
+        {/* a little greenery up top — the emblem is the crown here */}
         <Flora
           src={FLOWERS.eucalyptus}
-          place={{ top: '2%', left: '1%', width: 'clamp(104px, 15vw, 200px)' }}
+          place={{ top: '2%', left: '1%', width: 'clamp(96px, 13vw, 176px)' }}
           rotate={-20}
-          opacity={0.75}
-          blur={0.5}
+          opacity={0.6}
+          blur={0.6}
           delay={0.2}
-        />
-        <Flora
-          src={FLOWERS.roseBlush}
-          place={{ top: '5%', left: '6%', width: 'clamp(64px, 9vw, 116px)' }}
-          rotate={14}
-          delay={0.35}
-        />
-        <Flora
-          src={FLOWERS.babysBreath}
-          place={{ top: '3%', right: '4%', width: 'clamp(72px, 9vw, 128px)' }}
-          rotate={6}
-          opacity={0.8}
-          delay={0.4}
         />
         {/* bottom framing */}
         <Flora
@@ -57,12 +44,24 @@ export default function Closing() {
       </div>
 
       <div className="section__inner closing__inner">
+        <motion.img
+          src={MONOGRAM}
+          className="closing__crest"
+          alt="Malak and Youssef monogram"
+          width="685"
+          height="900"
+          initial={{ opacity: 0, y: 18, scale: 0.94 }}
+          whileInView={{ opacity: 1, y: 0, scale: 1 }}
+          viewport={{ once: true, margin: '-10% 0px' }}
+          transition={{ duration: 1.3, ease }}
+        />
+
         <motion.p
           className="eyebrow"
           initial={{ opacity: 0, y: 14 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          transition={{ duration: 1, ease }}
+          transition={{ duration: 1, ease, delay: 0.15 }}
         >
           With all our love
         </motion.p>

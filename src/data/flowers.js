@@ -18,3 +18,6 @@ export const FLOWERS = {
   babysBreath: '/images/flowers/babys-breath.svg',
   petal: '/images/flowers/petal.svg',
 }
+
+// The couple's monogram crest (M · Y), transparent-background cutout.
+export const MONOGRAM = '/images/monogram.webp'

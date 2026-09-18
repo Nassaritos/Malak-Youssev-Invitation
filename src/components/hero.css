@@ -59,6 +59,14 @@
   max-width: 52rem;
 }
 
+.hero__crest {
+  display: block;
+  width: auto;
+  height: clamp(118px, 22vw, 208px);
+  margin: 0 auto clamp(1.4rem, 3.5vh, 2.2rem);
+  filter: drop-shadow(0 16px 30px rgba(74, 53, 72, 0.08));
+}
+
 .hero__eyebrow {
   margin-bottom: clamp(1.6rem, 4vh, 2.6rem);
 }
