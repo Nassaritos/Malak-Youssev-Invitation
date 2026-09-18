@@ -1,0 +1,133 @@
+/* ---------- Desktop word-list nav ---------- */
+.nav-desktop {
+  position: fixed;
+  top: 1.6rem;
+  left: 0;
+  right: 0;
+  z-index: 60;
+  display: flex;
+  justify-content: center;
+}
+
+.nav-desktop ul {
+  display: flex;
+  gap: clamp(1.6rem, 3.4vw, 3rem);
+  margin: 0;
+  padding: 0.7rem 1.9rem;
+  list-style: none;
+  background: rgba(255, 253, 251, 0.72);
+  backdrop-filter: blur(10px) saturate(1.05);
+  -webkit-backdrop-filter: blur(10px) saturate(1.05);
+  border: 1px solid rgba(74, 53, 72, 0.06);
+  border-radius: 999px;
+  box-shadow: 0 12px 40px -28px rgba(74, 53, 72, 0.5);
+}
+
+.nav-desktop a {
+  font-family: var(--sans);
+  font-size: 0.68rem;
+  font-weight: 400;
+  letter-spacing: var(--tracking-mid);
+  text-transform: uppercase;
+  text-decoration: none;
+  color: var(--ink-soft);
+  transition: color 0.4s ease;
+  position: relative;
+}
+
+.nav-desktop a::after {
+  content: '';
+  position: absolute;
+  left: 50%;
+  bottom: -6px;
+  width: 0;
+  height: 1px;
+  background: var(--dusty-rose);
+  transition: width 0.4s ease, left 0.4s ease;
+}
+
+.nav-desktop a:hover {
+  color: var(--deep-plum);
+}
+.nav-desktop a:hover::after {
+  width: 100%;
+  left: 0;
+}
+
+/* ---------- Mobile trigger + sheet ---------- */
+.nav-trigger {
+  position: fixed;
+  top: 1.15rem;
+  right: 1.15rem;
+  z-index: 80;
+  width: 46px;
+  height: 46px;
+  display: none;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+  border: 1px solid rgba(74, 53, 72, 0.08);
+  border-radius: 50%;
+  background: rgba(255, 253, 251, 0.82);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  box-shadow: 0 10px 30px -22px rgba(74, 53, 72, 0.6);
+  cursor: pointer;
+}
+
+.nav-trigger span {
+  display: block;
+  width: 17px;
+  height: 1.4px;
+  background: var(--deep-plum);
+  transition: transform 0.4s ease, opacity 0.3s ease;
+}
+
+.nav-trigger.is-open span:first-child {
+  transform: translateY(3.2px) rotate(45deg);
+}
+.nav-trigger.is-open span:last-child {
+  transform: translateY(-3.2px) rotate(-45deg);
+}
+
+.nav-sheet {
+  position: fixed;
+  inset: 0;
+  z-index: 70;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(255, 253, 251, 0.94);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+}
+
+.nav-sheet ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  text-align: center;
+}
+
+.nav-sheet li {
+  margin: 1.6rem 0;
+}
+
+.nav-sheet a {
+  font-family: var(--serif);
+  font-size: clamp(2rem, 9vw, 2.8rem);
+  font-weight: 400;
+  letter-spacing: 0.03em;
+  color: var(--deep-plum);
+  text-decoration: none;
+}
+
+@media (max-width: 768px) {
+  .nav-desktop {
+    display: none;
+  }
+  .nav-trigger {
+    display: flex;
+  }
+}

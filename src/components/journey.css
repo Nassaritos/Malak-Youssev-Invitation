@@ -1,0 +1,171 @@
+.journey {
+  background: linear-gradient(180deg, var(--ivory) 0%, var(--ivory-warm) 55%, var(--ivory) 100%);
+  padding-bottom: clamp(4rem, 9vh, 7rem);
+}
+
+.journey__intro {
+  text-align: center;
+  max-width: 40rem;
+  margin-bottom: clamp(2.6rem, 6vh, 4.2rem);
+}
+
+.journey__title {
+  font-size: clamp(2.4rem, 8vw, 4.6rem);
+  font-weight: 500;
+  color: var(--deep-plum);
+  line-height: 1.02;
+  margin: 1rem 0 1.4rem;
+  letter-spacing: 0.01em;
+}
+
+.journey__lede {
+  font-size: clamp(1rem, 2.4vw, 1.18rem);
+  font-weight: 300;
+  line-height: 1.85;
+  color: var(--ink-soft);
+  max-width: 32rem;
+  margin: 0 auto;
+}
+
+/* river band with bank labels */
+.journey__river {
+  position: relative;
+  width: 100%;
+  margin: 0 auto clamp(3rem, 7vh, 5rem);
+  max-width: 100rem;
+}
+
+.journey__bank {
+  position: absolute;
+  top: 12%;
+  z-index: 3;
+  font-size: clamp(0.8rem, 2vw, 1.15rem);
+  font-style: italic;
+  letter-spacing: 0.08em;
+  color: var(--soft-purple);
+  opacity: 0.85;
+}
+
+.journey__bank--left {
+  left: clamp(1rem, 5vw, 4rem);
+}
+.journey__bank--right {
+  right: clamp(1rem, 5vw, 4rem);
+}
+
+/* steps */
+.journey__steps {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: clamp(1.4rem, 3vw, 2.6rem);
+  position: relative;
+}
+
+/* the connecting hairline behind the markers (desktop) */
+.journey__steps::before {
+  content: '';
+  position: absolute;
+  top: 7px;
+  left: 12.5%;
+  right: 12.5%;
+  height: 1px;
+  background: linear-gradient(
+    to right,
+    transparent,
+    var(--line),
+    var(--line),
+    transparent
+  );
+}
+
+.journey__step {
+  position: relative;
+  text-align: center;
+  padding-top: 2.4rem;
+}
+
+.journey__step-marker {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 15px;
+  height: 15px;
+  border-radius: 50%;
+  background: var(--ivory);
+  border: 1px solid var(--dusty-rose);
+}
+.journey__step-marker::after {
+  content: '';
+  position: absolute;
+  inset: 4px;
+  border-radius: 50%;
+  background: var(--dusty-rose);
+  opacity: 0.7;
+}
+
+.journey__step-n {
+  display: block;
+  font-family: var(--sans);
+  font-size: 0.66rem;
+  letter-spacing: var(--tracking-mid);
+  color: var(--dusty-rose);
+  margin-bottom: 0.7rem;
+}
+
+.journey__step-title {
+  font-size: clamp(1.25rem, 3vw, 1.6rem);
+  font-weight: 500;
+  color: var(--deep-plum);
+  margin: 0 0 0.6rem;
+  line-height: 1.15;
+}
+
+.journey__step-body {
+  font-size: 0.9rem;
+  font-weight: 300;
+  line-height: 1.7;
+  color: var(--ink-soft);
+  margin: 0 auto;
+  max-width: 15rem;
+}
+
+/* ---------- mobile: vertical route ---------- */
+@media (max-width: 780px) {
+  .journey__steps {
+    grid-template-columns: 1fr;
+    gap: 0;
+    max-width: 26rem;
+    margin: 0 auto;
+    padding-left: 2.2rem;
+  }
+  .journey__steps::before {
+    top: 6px;
+    bottom: 6px;
+    left: 7px;
+    right: auto;
+    width: 1px;
+    height: auto;
+    background: linear-gradient(to bottom, transparent, var(--line), var(--line), transparent);
+  }
+  .journey__step {
+    text-align: left;
+    padding: 1.6rem 0 1.6rem 1.6rem;
+  }
+  .journey__step-marker {
+    left: -2.2rem;
+    top: 2rem;
+    transform: none;
+  }
+  .journey__step-body {
+    margin: 0;
+    max-width: none;
+  }
+  .journey__bank {
+    top: 8%;
+    font-size: 0.75rem;
+  }
+}

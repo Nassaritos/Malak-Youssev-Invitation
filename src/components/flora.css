@@ -1,0 +1,18 @@
+.flora-layer {
+  position: absolute;
+  inset: 0;
+  overflow: visible;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.flora-wrap {
+  display: block;
+  will-change: transform, opacity;
+}
+
+.flora {
+  display: block;
+  user-select: none;
+  -webkit-user-drag: none;
+}

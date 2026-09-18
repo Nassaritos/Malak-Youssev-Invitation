@@ -1,0 +1,42 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 220 340" width="220" height="340" role="img" aria-label="Soft eucalyptus sprig">
+  <defs>
+    <linearGradient id="euc-stem" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#aeb996"/>
+      <stop offset="100%" stop-color="#93a67f"/>
+    </linearGradient>
+    <radialGradient id="euc-leaf" cx="42%" cy="38%" r="70%">
+      <stop offset="0%" stop-color="#cdd6bd"/>
+      <stop offset="60%" stop-color="#a9bd9c"/>
+      <stop offset="100%" stop-color="#8ba57e"/>
+    </radialGradient>
+    <radialGradient id="euc-leaf2" cx="42%" cy="38%" r="70%">
+      <stop offset="0%" stop-color="#d7dfc9"/>
+      <stop offset="60%" stop-color="#b6c7a8"/>
+      <stop offset="100%" stop-color="#9ab389"/>
+    </radialGradient>
+  </defs>
+
+  <!-- main arching stem -->
+  <path d="M40 320 C70 250 110 190 150 120 C168 86 178 54 182 24"
+        fill="none" stroke="#9aab82" stroke-width="4.5" stroke-linecap="round"/>
+
+  <!-- pairs of rounded eucalyptus leaves along the stem -->
+  <g>
+    <!-- helper: each leaf is a soft rounded oval -->
+    <g fill="url(#euc-leaf)">
+      <ellipse cx="70" cy="286" rx="30" ry="20" transform="rotate(-38 70 286)"/>
+      <ellipse cx="120" cy="266" rx="31" ry="21" transform="rotate(30 120 266)"/>
+      <ellipse cx="92" cy="232" rx="29" ry="19" transform="rotate(-42 92 232)"/>
+      <ellipse cx="140" cy="214" rx="30" ry="20" transform="rotate(26 140 214)"/>
+      <ellipse cx="112" cy="176" rx="27" ry="18" transform="rotate(-46 112 176)"/>
+      <ellipse cx="158" cy="160" rx="27" ry="18" transform="rotate(22 158 160)"/>
+    </g>
+    <g fill="url(#euc-leaf2)">
+      <ellipse cx="132" cy="126" rx="23" ry="15" transform="rotate(-50 132 126)"/>
+      <ellipse cx="170" cy="112" rx="22" ry="14" transform="rotate(18 170 112)"/>
+      <ellipse cx="150" cy="82" rx="18" ry="12" transform="rotate(-54 150 82)"/>
+      <ellipse cx="178" cy="70" rx="17" ry="11" transform="rotate(14 178 70)"/>
+      <ellipse cx="170" cy="44" rx="13" ry="9" transform="rotate(-30 170 44)"/>
+    </g>
+  </g>
+</svg>

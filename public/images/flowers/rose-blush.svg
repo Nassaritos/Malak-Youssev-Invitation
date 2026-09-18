@@ -1,0 +1,61 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 300" width="300" height="300" role="img" aria-label="Soft blush garden rose">
+  <defs>
+    <radialGradient id="rb-outer" cx="50%" cy="58%" r="60%">
+      <stop offset="0%" stop-color="#fbeaee"/>
+      <stop offset="55%" stop-color="#ecc4d0"/>
+      <stop offset="100%" stop-color="#d59fb0"/>
+    </radialGradient>
+    <radialGradient id="rb-mid" cx="50%" cy="60%" r="58%">
+      <stop offset="0%" stop-color="#fdf3f6"/>
+      <stop offset="60%" stop-color="#f1d2dc"/>
+      <stop offset="100%" stop-color="#dcaebc"/>
+    </radialGradient>
+    <radialGradient id="rb-inner" cx="50%" cy="62%" r="55%">
+      <stop offset="0%" stop-color="#fefafb"/>
+      <stop offset="70%" stop-color="#f7e2e9"/>
+      <stop offset="100%" stop-color="#e6c0cd"/>
+    </radialGradient>
+    <radialGradient id="rb-core" cx="50%" cy="55%" r="60%">
+      <stop offset="0%" stop-color="#f6dcae"/>
+      <stop offset="100%" stop-color="#e7bfd0"/>
+    </radialGradient>
+  </defs>
+
+  <!-- petal geometry: symmetric about x=150, tip up, base at center (150,158) -->
+  <g>
+    <!-- back ring: 6 broad petals -->
+    <g fill="url(#rb-outer)" opacity="0.96">
+      <g><path d="M150 158 C96 132 90 60 150 40 C210 60 204 132 150 158 Z"/></g>
+      <g transform="rotate(60 150 150)"><path d="M150 158 C96 132 90 60 150 40 C210 60 204 132 150 158 Z"/></g>
+      <g transform="rotate(120 150 150)"><path d="M150 158 C96 132 90 60 150 40 C210 60 204 132 150 158 Z"/></g>
+      <g transform="rotate(180 150 150)"><path d="M150 158 C96 132 90 60 150 40 C210 60 204 132 150 158 Z"/></g>
+      <g transform="rotate(240 150 150)"><path d="M150 158 C96 132 90 60 150 40 C210 60 204 132 150 158 Z"/></g>
+      <g transform="rotate(300 150 150)"><path d="M150 158 C96 132 90 60 150 40 C210 60 204 132 150 158 Z"/></g>
+    </g>
+
+    <!-- middle ring: 6 petals, rotated 30deg, a touch smaller -->
+    <g fill="url(#rb-mid)" opacity="0.97" transform="rotate(30 150 150)">
+      <g><path d="M150 152 C108 132 104 78 150 60 C196 78 192 132 150 152 Z"/></g>
+      <g transform="rotate(60 150 150)"><path d="M150 152 C108 132 104 78 150 60 C196 78 192 132 150 152 Z"/></g>
+      <g transform="rotate(120 150 150)"><path d="M150 152 C108 132 104 78 150 60 C196 78 192 132 150 152 Z"/></g>
+      <g transform="rotate(180 150 150)"><path d="M150 152 C108 132 104 78 150 60 C196 78 192 132 150 152 Z"/></g>
+      <g transform="rotate(240 150 150)"><path d="M150 152 C108 132 104 78 150 60 C196 78 192 132 150 152 Z"/></g>
+      <g transform="rotate(300 150 150)"><path d="M150 152 C108 132 104 78 150 60 C196 78 192 132 150 152 Z"/></g>
+    </g>
+
+    <!-- inner cupped ring: 5 small petals -->
+    <g fill="url(#rb-inner)" transform="rotate(12 150 150)">
+      <g><path d="M150 150 C122 138 120 98 150 86 C180 98 178 138 150 150 Z"/></g>
+      <g transform="rotate(72 150 150)"><path d="M150 150 C122 138 120 98 150 86 C180 98 178 138 150 150 Z"/></g>
+      <g transform="rotate(144 150 150)"><path d="M150 150 C122 138 120 98 150 86 C180 98 178 138 150 150 Z"/></g>
+      <g transform="rotate(216 150 150)"><path d="M150 150 C122 138 120 98 150 86 C180 98 178 138 150 150 Z"/></g>
+      <g transform="rotate(288 150 150)"><path d="M150 150 C122 138 120 98 150 86 C180 98 178 138 150 150 Z"/></g>
+    </g>
+
+    <!-- swirled centre -->
+    <g fill="url(#rb-core)">
+      <path d="M150 148 C134 142 132 118 150 110 C168 118 166 142 150 148 Z"/>
+      <path d="M150 145 C140 141 139 126 150 121 C161 126 160 141 150 145 Z" fill="#f8e4c6" opacity="0.9"/>
+    </g>
+  </g>
+</svg>

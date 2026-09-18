@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 90" width="120" height="90" role="img" aria-label="Single soft rose petal">
+  <defs>
+    <radialGradient id="pt" cx="38%" cy="60%" r="75%">
+      <stop offset="0%" stop-color="#fbeef2"/>
+      <stop offset="60%" stop-color="#f0cfda"/>
+      <stop offset="100%" stop-color="#dca9bb"/>
+    </radialGradient>
+  </defs>
+  <path d="M12 60 C10 34 34 12 62 12 C92 12 112 34 108 58 C104 78 78 84 54 80 C34 77 16 74 12 60 Z" fill="url(#pt)"/>
+  <path d="M30 62 C36 46 54 36 78 38" fill="none" stroke="#e9bccb" stroke-width="1.4" opacity="0.6" stroke-linecap="round"/>
+</svg>

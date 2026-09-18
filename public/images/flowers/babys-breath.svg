@@ -1,0 +1,33 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 240 240" width="240" height="240" role="img" aria-label="Delicate white baby's breath flowers">
+  <defs>
+    <radialGradient id="bb-flower" cx="50%" cy="45%" r="60%">
+      <stop offset="0%" stop-color="#ffffff"/>
+      <stop offset="70%" stop-color="#fdf8f4"/>
+      <stop offset="100%" stop-color="#efe4da"/>
+    </radialGradient>
+  </defs>
+
+  <!-- fine stems -->
+  <g fill="none" stroke="#b4c0a2" stroke-width="1.6" opacity="0.8" stroke-linecap="round">
+    <path d="M120 220 C118 180 110 150 92 128"/>
+    <path d="M120 220 C122 178 132 150 152 130"/>
+    <path d="M120 220 C120 186 118 160 116 138"/>
+    <path d="M92 128 C80 118 66 112 54 108"/>
+    <path d="M92 128 C86 112 80 98 76 84"/>
+    <path d="M152 130 C164 120 178 116 190 112"/>
+    <path d="M152 130 C158 114 166 100 172 88"/>
+    <path d="M116 138 C110 120 108 102 108 86"/>
+    <path d="M116 138 C126 122 136 110 148 100"/>
+  </g>
+
+  <!-- tiny 5-petal blossoms -->
+  <g fill="url(#bb-flower)">
+    <g transform="translate(54 108) scale(0.9)"><circle cx="0" cy="-6" r="3.4"/><circle cx="5.7" cy="-1.9" r="3.4"/><circle cx="3.5" cy="4.9" r="3.4"/><circle cx="-3.5" cy="4.9" r="3.4"/><circle cx="-5.7" cy="-1.9" r="3.4"/><circle cx="0" cy="0" r="1.7" fill="#e9d9b8"/></g>
+    <g transform="translate(76 84)"><circle cx="0" cy="-6" r="3.4"/><circle cx="5.7" cy="-1.9" r="3.4"/><circle cx="3.5" cy="4.9" r="3.4"/><circle cx="-3.5" cy="4.9" r="3.4"/><circle cx="-5.7" cy="-1.9" r="3.4"/><circle cx="0" cy="0" r="1.7" fill="#e9d9b8"/></g>
+    <g transform="translate(190 112) scale(0.85)"><circle cx="0" cy="-6" r="3.4"/><circle cx="5.7" cy="-1.9" r="3.4"/><circle cx="3.5" cy="4.9" r="3.4"/><circle cx="-3.5" cy="4.9" r="3.4"/><circle cx="-5.7" cy="-1.9" r="3.4"/><circle cx="0" cy="0" r="1.7" fill="#e9d9b8"/></g>
+    <g transform="translate(172 88)"><circle cx="0" cy="-6" r="3.4"/><circle cx="5.7" cy="-1.9" r="3.4"/><circle cx="3.5" cy="4.9" r="3.4"/><circle cx="-3.5" cy="4.9" r="3.4"/><circle cx="-5.7" cy="-1.9" r="3.4"/><circle cx="0" cy="0" r="1.7" fill="#e9d9b8"/></g>
+    <g transform="translate(108 86)"><circle cx="0" cy="-6" r="3.4"/><circle cx="5.7" cy="-1.9" r="3.4"/><circle cx="3.5" cy="4.9" r="3.4"/><circle cx="-3.5" cy="4.9" r="3.4"/><circle cx="-5.7" cy="-1.9" r="3.4"/><circle cx="0" cy="0" r="1.7" fill="#e9d9b8"/></g>
+    <g transform="translate(148 100) scale(0.9)"><circle cx="0" cy="-6" r="3.4"/><circle cx="5.7" cy="-1.9" r="3.4"/><circle cx="3.5" cy="4.9" r="3.4"/><circle cx="-3.5" cy="4.9" r="3.4"/><circle cx="-5.7" cy="-1.9" r="3.4"/><circle cx="0" cy="0" r="1.7" fill="#e9d9b8"/></g>
+    <g transform="translate(120 128) scale(0.8)"><circle cx="0" cy="-6" r="3.4"/><circle cx="5.7" cy="-1.9" r="3.4"/><circle cx="3.5" cy="4.9" r="3.4"/><circle cx="-3.5" cy="4.9" r="3.4"/><circle cx="-5.7" cy="-1.9" r="3.4"/><circle cx="0" cy="0" r="1.7" fill="#e9d9b8"/></g>
+  </g>
+</svg>

@@ -1,0 +1,234 @@
+.rsvp {
+  background: linear-gradient(180deg, var(--ivory) 0%, var(--blush-soft) 100%);
+  text-align: center;
+}
+
+.rsvp__inner {
+  max-width: 46rem;
+}
+
+.rsvp__title {
+  font-size: clamp(2.9rem, 10vw, 5.6rem);
+  font-weight: 500;
+  color: var(--deep-plum);
+  margin: 1.1rem 0 1.4rem;
+  line-height: 1;
+}
+
+.rsvp__lede {
+  font-size: clamp(1.05rem, 2.6vw, 1.24rem);
+  font-weight: 300;
+  color: var(--ink-soft);
+  max-width: 32rem;
+  margin: 0 auto clamp(3rem, 7vh, 4.2rem);
+  line-height: 1.9;
+}
+.rsvp__nowrap {
+  white-space: nowrap;
+}
+
+/* ---------- form ---------- */
+.rsvp__form {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: clamp(1.8rem, 4vw, 2.6rem) clamp(1.8rem, 4.5vw, 3rem);
+  text-align: left;
+}
+
+.rsvp__field {
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+  border: none;
+  margin: 0;
+  padding: 0;
+  min-width: 0;
+}
+
+.rsvp__field--wide {
+  grid-column: 1 / -1;
+}
+
+.rsvp__field label,
+.rsvp__field legend {
+  font-family: var(--sans);
+  font-size: 0.62rem;
+  font-weight: 400;
+  letter-spacing: var(--tracking-mid);
+  text-transform: uppercase;
+  color: var(--soft-purple);
+  padding: 0;
+}
+.rsvp__field label em,
+.rsvp__field legend em {
+  font-style: normal;
+  text-transform: none;
+  letter-spacing: 0.02em;
+  color: var(--dusty-rose);
+}
+
+.rsvp__form input[type='text'],
+.rsvp__form select,
+.rsvp__form textarea {
+  font-family: var(--sans);
+  font-size: 1.06rem;
+  font-weight: 300;
+  color: var(--deep-plum);
+  background: transparent;
+  border: none;
+  border-bottom: 1px solid var(--line);
+  border-radius: 0;
+  padding: 0.65rem 0;
+  width: 100%;
+  transition: border-color 0.4s ease;
+  -webkit-appearance: none;
+  appearance: none;
+}
+
+.rsvp__form textarea {
+  resize: none;
+  line-height: 1.7;
+}
+
+.rsvp__form input::placeholder,
+.rsvp__form textarea::placeholder {
+  color: rgba(122, 106, 117, 0.5);
+  font-style: italic;
+}
+
+.rsvp__form input:focus,
+.rsvp__form select:focus,
+.rsvp__form textarea:focus {
+  outline: none;
+  border-bottom-color: var(--dusty-rose);
+}
+
+.rsvp__form [aria-invalid='true'] input,
+.rsvp__form [aria-invalid='true'] .rsvp__choices {
+  border-bottom-color: var(--dusty-rose);
+}
+
+/* select chevron */
+.rsvp__select-wrap {
+  position: relative;
+}
+.rsvp__chevron {
+  position: absolute;
+  right: 2px;
+  top: 50%;
+  width: 8px;
+  height: 8px;
+  border-right: 1px solid var(--soft-purple);
+  border-bottom: 1px solid var(--soft-purple);
+  transform: translateY(-70%) rotate(45deg);
+  pointer-events: none;
+}
+
+/* attendance choices */
+.rsvp__choices {
+  display: flex;
+  gap: 1rem;
+  margin-top: 0.5rem;
+}
+
+.rsvp__choice {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  min-height: 3.6rem;
+  padding: 1.35rem 1.4rem;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  cursor: pointer;
+  transition: all 0.4s ease;
+  font-size: 0.98rem;
+  letter-spacing: 0.05em;
+  color: var(--ink-soft);
+  text-transform: none;
+}
+.rsvp__choice input {
+  position: absolute;
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+.rsvp__choice span {
+  font-family: var(--sans);
+}
+.rsvp__choice:hover {
+  border-color: var(--dusty-rose);
+}
+.rsvp__choice.is-active {
+  background: rgba(217, 168, 183, 0.16);
+  border-color: var(--dusty-rose);
+  color: var(--deep-plum);
+}
+
+.rsvp__error {
+  grid-column: 1 / -1;
+  margin: -0.4rem 0 0;
+  font-size: 0.82rem;
+  color: #b06a7d;
+  font-style: italic;
+}
+
+.rsvp__submit {
+  grid-column: 1 / -1;
+  justify-self: center;
+  margin-top: 1rem;
+  padding: 1.15rem 3.8rem;
+  border: 1px solid var(--deep-plum);
+  border-radius: 999px;
+  background: var(--deep-plum);
+  color: var(--ivory);
+  font-family: var(--sans);
+  font-size: 0.7rem;
+  font-weight: 400;
+  letter-spacing: var(--tracking-mid);
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: transform 0.4s ease, background 0.4s ease, color 0.4s ease, box-shadow 0.4s ease;
+}
+.rsvp__submit:hover {
+  background: transparent;
+  color: var(--deep-plum);
+  box-shadow: 0 14px 34px -22px rgba(74, 53, 72, 0.7);
+  transform: translateY(-1px);
+}
+
+/* ---------- thank-you ---------- */
+.rsvp__thanks {
+  padding: clamp(1.5rem, 5vh, 3rem) 0;
+}
+.rsvp__thanks-mark {
+  display: block;
+  font-family: var(--serif);
+  font-style: italic;
+  font-size: clamp(2.6rem, 8vw, 4rem);
+  color: var(--dusty-rose);
+  margin-bottom: 0.8rem;
+}
+.rsvp__thanks h3 {
+  font-family: var(--serif);
+  font-size: clamp(1.8rem, 5vw, 2.6rem);
+  font-weight: 500;
+  color: var(--deep-plum);
+  margin: 0 0 0.8rem;
+}
+.rsvp__thanks p {
+  font-size: 1rem;
+  font-weight: 300;
+  color: var(--ink-soft);
+  margin: 0;
+}
+
+@media (max-width: 560px) {
+  .rsvp__form {
+    grid-template-columns: 1fr;
+  }
+  .rsvp__choices {
+    flex-direction: column;
+  }
+}
