@@ -15,7 +15,7 @@ const STEPS = [
   {
     n: '02',
     title: 'Take the boat',
-    body: 'A boat will be waiting for you at the water’s edge — no need to wait, no need to rush.',
+    body: 'The boat glides to and fro across the Nile all evening — come at any hour and it will be there, ready for you.',
   },
   {
     n: '03',
@@ -62,14 +62,14 @@ export default function Journey() {
 
       <div className="section__inner journey__intro">
         <motion.p className="index-mark" {...fadeUp(0)}>
-          02 — The Journey
+          03 — The Journey
         </motion.p>
         <motion.h2 className="journey__title serif" {...fadeUp(0.1)}>
           A little journey to us
         </motion.h2>
         <motion.p className="journey__lede" {...fadeUp(0.2)}>
-          Our celebration begins before you arrive. Join us by the Nile, where a short boat ride
-          will carry you across to Taracina.
+          Our celebration begins before you arrive. Join us by the Nile, where a boat waits to carry
+          you across to Taracina — arrive at any time you like.
         </motion.p>
       </div>
 
@@ -98,6 +98,11 @@ export default function Journey() {
             </motion.li>
           ))}
         </ol>
+
+        <motion.p className="journey__note" {...fadeUp(0.2)}>
+          There is no set hour to cross — the boat travels back and forth all evening, always
+          waiting, so come whenever suits you.
+        </motion.p>
       </div>
     </section>
   )

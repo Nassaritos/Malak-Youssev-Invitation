@@ -4,8 +4,8 @@ import './navigation.css'
 
 const LINKS = [
   { id: 'invitation', label: 'Invitation' },
-  { id: 'journey', label: 'Journey' },
   { id: 'details', label: 'Details' },
+  { id: 'journey', label: 'Journey' },
   { id: 'rsvp', label: 'RSVP' },
 ]
 

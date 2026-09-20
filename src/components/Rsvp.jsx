@@ -140,8 +140,7 @@ export default function Rsvp() {
           Will you join us?
         </motion.h2>
         <motion.p className="rsvp__lede" {...fadeUp(0.16)}>
-          We’d love to celebrate this beautiful evening with you. Kindly let us know by
-          <span className="rsvp__nowrap"> the 1st of October.</span>
+          We’d love to celebrate this beautiful evening with you. 
         </motion.p>
 
         <AnimatePresence mode="wait">

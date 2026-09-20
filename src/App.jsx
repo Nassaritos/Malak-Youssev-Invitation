@@ -11,8 +11,8 @@ export default function App() {
       <Navigation />
       <main>
         <Hero />
-        <Journey />
         <Details />
+        <Journey />
         <Rsvp />
         <Closing />
       </main>

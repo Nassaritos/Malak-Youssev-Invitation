@@ -38,7 +38,7 @@ export default function Details() {
 
       <div className="section__inner details__inner">
         <motion.p className="index-mark" {...fadeUp(0)}>
-          03 — The Evening
+          02 — The Evening
         </motion.p>
 
         <motion.h2 className="details__names serif" {...fadeUp(0.08)}>

@@ -7,6 +7,7 @@
   justify-content: center;
   overflow: visible;
   isolation: isolate;
+  z-index: 10;
 }
 
 .closing__wash {
@@ -87,20 +88,41 @@
 .closing__credit-love {
   font-family: var(--serif);
   font-style: italic;
+  font-weight: 800;
   text-transform: none;
   letter-spacing: 0.02em;
-  font-size: 1.15em;
+  font-size: 2em;
   color: var(--dusty-rose);
+}
+
+/* On phones, pin the credit as a slim, always-visible footer bar. */
+@media (max-width: 620px) {
+  .closing__credit {
+    position: fixed;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 45;
+    margin: 0;
+    padding: 0.5rem 1rem calc(0.5rem + env(safe-area-inset-bottom));
+    font-size: 0.58rem;
+    line-height: 1.35;
+    opacity: 1;
+    background: rgba(255, 253, 251, 0.8);
+    backdrop-filter: blur(12px) saturate(1.05);
+    -webkit-backdrop-filter: blur(12px) saturate(1.05);
+    border-top: 1px solid rgba(74, 53, 72, 0.06);
+    pointer-events: none;
+  }
+  /* room so the very end of the page never hides behind the bar */
+  main {
+    padding-bottom: 2.6rem;
+  }
 }
 
 @media (max-width: 560px) {
   .closing__meta {
     letter-spacing: 0.06em;
     line-height: 2;
-  }
-  .closing__credit {
-    font-size: 0.56rem;
-    padding: 0 26%;
-    line-height: 1.9;
   }
 }

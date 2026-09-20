@@ -145,7 +145,7 @@ export default function Hero() {
       </div>
 
       <motion.a
-        href="#journey"
+        href="#details"
         className="hero__scroll"
         aria-label="Begin"
         initial={{ opacity: 0 }}
