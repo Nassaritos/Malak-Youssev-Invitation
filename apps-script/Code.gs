@@ -17,27 +17,31 @@
  * 6. Paste that URL into src/data/event.js  →  RSVP_ENDPOINT
  * 7. Commit & push. Submissions now land in the sheet.
  *
- * To change the code later, edit here then Deploy → Manage deployments →
- * (edit the existing one) → Version: New version → Deploy. The /exec URL
- * stays the same.
+ * ---- UPDATING -------------------------------------------------
+ * After editing this code: Deploy → Manage deployments → pencil icon on
+ * the existing deployment → Version: "New version" → Deploy.
+ * The /exec URL stays the same, so the website needs no change.
  * =============================================================
  */
 
 var SHEET_NAME = 'RSVPs';
+var HEADERS = ['Submitted at', 'Name', 'Guests', 'Attending', 'Message', 'ID'];
+var ID_COLUMN = 6; // column F
 
 function doPost(e) {
   var lock = LockService.getScriptLock();
   try {
-    lock.waitLock(20000); // avoid two submissions writing at once
+    lock.waitLock(10000); // one writer at a time
 
-    var ss = SpreadsheetApp.getActiveSpreadsheet();
-    var sheet = ss.getSheetByName(SHEET_NAME);
-    if (!sheet) {
-      sheet = ss.insertSheet(SHEET_NAME);
-      sheet.appendRow(['Submitted at', 'Name', 'Guests', 'Attending', 'Message']);
+    var sheet = getSheet_();
+    var p = (e && e.parameter) || {};
+    var id = String(p.id || '').trim();
+
+    // Ignore a submission we have already recorded (retries, double taps).
+    if (id && alreadyRecorded_(sheet, id)) {
+      return json_({ result: 'duplicate' });
     }
 
-    var p = (e && e.parameter) || {};
     var attending =
       p.attendance === 'yes' ? 'Joyfully accepts' :
       p.attendance === 'no'  ? 'Regretfully declines' :
@@ -48,12 +52,13 @@ function doPost(e) {
       p.name || '',
       p.guests || '',
       attending,
-      p.message || ''
+      p.message || '',
+      id
     ]);
 
-    return json({ result: 'success' });
+    return json_({ result: 'success' });
   } catch (err) {
-    return json({ result: 'error', error: String(err) });
+    return json_({ result: 'error', error: String(err) });
   } finally {
     try { lock.releaseLock(); } catch (ignore) {}
   }
@@ -61,10 +66,35 @@ function doPost(e) {
 
 // A friendly response if someone opens the URL directly in a browser.
 function doGet() {
-  return json({ result: 'ok', message: 'RSVP endpoint is live.' });
+  return json_({ result: 'ok', message: 'RSVP endpoint is live.' });
 }
 
-function json(obj) {
+function getSheet_() {
+  var ss = SpreadsheetApp.getActiveSpreadsheet();
+  var sheet = ss.getSheetByName(SHEET_NAME);
+  if (!sheet) {
+    sheet = ss.insertSheet(SHEET_NAME);
+    sheet.appendRow(HEADERS);
+    return sheet;
+  }
+  // Older sheets were created without the ID column — add its header once.
+  if (sheet.getRange(1, ID_COLUMN).getValue() === '') {
+    sheet.getRange(1, ID_COLUMN).setValue('ID');
+  }
+  return sheet;
+}
+
+function alreadyRecorded_(sheet, id) {
+  var lastRow = sheet.getLastRow();
+  if (lastRow < 2) return false;
+  return sheet
+    .getRange(2, ID_COLUMN, lastRow - 1, 1)
+    .createTextFinder(id)
+    .matchEntireCell(true)
+    .findNext() !== null;
+}
+
+function json_(obj) {
   return ContentService
     .createTextOutput(JSON.stringify(obj))
     .setMimeType(ContentService.MimeType.JSON);

@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useRef, useState } from 'react'
 import { AnimatePresence, motion } from 'framer-motion'
 import Flora from './Flora.jsx'
 import { FLOWERS } from '../data/flowers.js'
@@ -9,6 +9,39 @@ const ENDPOINT_READY =
   typeof RSVP_ENDPOINT === 'string' && RSVP_ENDPOINT.startsWith('https://script.google.com/')
 
 const ease = [0.22, 1, 0.36, 1]
+
+function makeId() {
+  if (typeof crypto !== 'undefined' && crypto.randomUUID) return crypto.randomUUID()
+  return Date.now().toString(36) + Math.random().toString(36).slice(2)
+}
+
+/**
+ * Send one RSVP to the Google Apps Script endpoint.
+ *
+ * `no-cors`: Apps Script answers via a redirect whose response the browser
+ * refuses to expose, which used to make a *successful* write look like a
+ * failure and trigger a second (duplicate) submission. With `no-cors` the
+ * request is delivered normally and fetch only rejects on a real network
+ * failure. `keepalive` lets it finish even if the guest closes the page.
+ *
+ * Each reply carries a unique id, and the script ignores an id it has already
+ * recorded — so the one retry below can never produce a duplicate row.
+ */
+function sendRsvp(fields) {
+  const body = new URLSearchParams({
+    ...fields,
+    id: makeId(),
+    submittedAt: new Date().toISOString(),
+  })
+  const post = () =>
+    fetch(RSVP_ENDPOINT, { method: 'POST', mode: 'no-cors', body, keepalive: true })
+
+  post().catch(() => {
+    setTimeout(() => {
+      post().catch((err) => console.error('RSVP could not be sent:', err))
+    }, 2500)
+  })
+}
 
 function fadeUp(delay = 0) {
   return {
@@ -26,8 +59,10 @@ export default function Rsvp() {
     attendance: '',
     message: '',
   })
-  const [status, setStatus] = useState('idle') // idle | sending | error | done
+  const [status, setStatus] = useState('idle') // idle | error | done
   const [errorField, setErrorField] = useState(null)
+  // Synchronous guard: a quick double tap fires twice before React re-renders.
+  const submittedRef = useRef(false)
 
   const update = (key) => (e) => {
     setForm((f) => ({ ...f, [key]: e.target.value }))
@@ -35,9 +70,9 @@ export default function Rsvp() {
     if (status === 'error') setStatus('idle')
   }
 
-  const onSubmit = async (e) => {
+  const onSubmit = (e) => {
     e.preventDefault()
-    if (status === 'sending') return
+    if (submittedRef.current) return
 
     if (!form.name.trim()) {
       setErrorField('name')
@@ -59,43 +94,23 @@ export default function Rsvp() {
       /* storage may be unavailable — the flow still continues */
     }
 
-    // If no Google Sheet endpoint is configured yet, just show the thank-you.
-    if (!ENDPOINT_READY) {
-      setStatus('done')
-      return
-    }
-
-    setStatus('sending')
+    // Thank the guest straight away — Google can take a few seconds to reply,
+    // and there is nothing for them to wait on.
+    submittedRef.current = true
     setErrorField(null)
+    setStatus('done')
 
-    const body = new URLSearchParams({
-      name: form.name.trim(),
-      guests: form.guests,
-      attendance: form.attendance,
-      message: form.message.trim(),
-      submittedAt: new Date().toISOString(),
-    })
-
-    // Try a few times — Apps Script can be briefly flaky.
-    for (let attempt = 0; attempt < 3; attempt++) {
-      try {
-        const res = await fetch(RSVP_ENDPOINT, { method: 'POST', body })
-        if (res.ok) {
-          setStatus('done')
-          return
-        }
-      } catch (err) {
-        // Network/CORS hiccup — the row may still have been written.
-        console.error('RSVP submission error:', err)
-      }
+    if (ENDPOINT_READY) {
+      sendRsvp({
+        name: form.name.trim(),
+        guests: form.guests,
+        attendance: form.attendance,
+        message: form.message.trim(),
+      })
     }
-
-    setErrorField('submit')
-    setStatus('error')
   }
 
   const accepting = form.attendance === 'yes'
-  const sending = status === 'sending'
 
   return (
     <section id="rsvp" className="rsvp section" aria-label="Répondez s'il vous plaît">
@@ -243,14 +258,12 @@ export default function Rsvp() {
                 <p className="rsvp__error" role="alert">
                   {errorField === 'name'
                     ? 'Please share your name so we know who’s coming.'
-                    : errorField === 'attendance'
-                    ? 'Please let us know if you’ll be joining us.'
-                    : 'Something went wrong sending your reply. Please try again.'}
+                    : 'Please let us know if you’ll be joining us.'}
                 </p>
               )}
 
-              <button type="submit" className="rsvp__submit" disabled={sending}>
-                {sending ? 'Sending…' : 'Send my reply'}
+              <button type="submit" className="rsvp__submit">
+                Send my reply
               </button>
             </motion.form>
           )}
