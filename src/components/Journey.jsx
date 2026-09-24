@@ -9,23 +9,23 @@ const ease = [0.22, 1, 0.36, 1]
 const STEPS = [
   {
     n: '01',
-    title: 'Park at the Corniche',
-    body: 'Leave your car along the Corniche and make your way, unhurried, down to the water.',
+    title: 'By the Corniche',
+    body: 'Leave your car along the Corniche and stroll, unhurried, down to the water’s edge.',
   },
   {
     n: '02',
-    title: 'Take the boat',
-    body: 'The boat glides to and fro across the Nile all evening — come at any hour and it will be there, ready for you.',
+    title: 'Aboard the boat',
+    body: 'A boat awaits you at the landing, ready to set sail the moment you step aboard.',
   },
   {
     n: '03',
-    title: 'Cross the Nile',
-    body: 'Step aboard and let the river carry you across to Taracina as the evening softens.',
+    title: 'Across the Nile',
+    body: 'Let the river carry you gently to Taracina as the evening light softens.',
   },
   {
     n: '04',
-    title: 'Arrive & celebrate',
-    body: 'And there, on the other side, we’ll be waiting for you.',
+    title: 'Into the celebration',
+    body: 'And on the far shore, we will be waiting to welcome you.',
   },
 ]
 
@@ -68,8 +68,8 @@ export default function Journey() {
           A little journey to us
         </motion.h2>
         <motion.p className="journey__lede" {...fadeUp(0.2)}>
-          Our celebration begins before you arrive. Join us by the Nile, where a boat waits to carry
-          you across to Taracina — arrive at any time you like.
+          Our celebration begins before you arrive. Meet us by the Nile, where a short passage by
+          boat will carry you across to Taracina.
         </motion.p>
       </div>
 
@@ -100,8 +100,9 @@ export default function Journey() {
         </ol>
 
         <motion.p className="journey__note" {...fadeUp(0.2)}>
-          There is no set hour to cross — the boat travels back and forth all evening, always
-          waiting, so come whenever suits you.
+          Throughout the evening, our boat remains at your service — it sets out with every guest,
+          never waiting for its seats to fill, and stands ready to return you to the shore whenever
+          you wish to take your leave.
         </motion.p>
       </div>
     </section>

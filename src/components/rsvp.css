@@ -161,7 +161,7 @@
   border-color: var(--dusty-rose);
 }
 .rsvp__choice.is-active {
-  background: rgba(217, 168, 183, 0.16);
+  background: rgba(195, 138, 155, 0.16);
   border-color: var(--dusty-rose);
   color: var(--deep-plum);
 }
