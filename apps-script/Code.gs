@@ -42,15 +42,19 @@ function doPost(e) {
       return json_({ result: 'duplicate' });
     }
 
+    var declining = p.attendance === 'no';
     var attending =
       p.attendance === 'yes' ? 'Joyfully accepts' :
-      p.attendance === 'no'  ? 'Regretfully declines' :
+      declining              ? 'Regretfully declines' :
       (p.attendance || '');
+
+    // Someone who isn't coming brings no guests, whatever the dropdown said.
+    var guests = declining ? 0 : (p.guests || '');
 
     sheet.appendRow([
       new Date(),
       p.name || '',
-      p.guests || '',
+      guests,
       attending,
       p.message || '',
       id
