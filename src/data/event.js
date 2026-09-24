@@ -23,4 +23,4 @@ export const EVENT = {
  * While this is left as the placeholder, RSVPs are just saved to the
  * visitor's browser (localStorage) and the thank-you still shows.
  */
-export const RSVP_ENDPOINT = 'https://script.google.com/macros/s/AKfycbwzUJwr6QBn9fOtl1fW1vbrxOQOeEjtJVyurmdvt9PMJu35G_pzzniGXVqTDrQaV3GnrA/exec'
+export const RSVP_ENDPOINT = 'https://script.google.com/macros/s/AKfycbxRQhu1YyfPtj1E3HOU2lvG_9me0z1zg4CbmP7GlveroJdB_VtLYBBnITRFHm2b72IFwQ/exec'
